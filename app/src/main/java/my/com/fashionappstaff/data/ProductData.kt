@@ -10,6 +10,8 @@ data class Product(
     var productName    : String = "",
     var productDescrip : String = "",
     var productQuan    : Int = 0,
+    var productPrice   : Double = 0.0,
+    var productCategory: String = "",
     var date           : Date = Date(),
     var productPhoto   : Blob = Blob.fromBytes(ByteArray(0)),
 

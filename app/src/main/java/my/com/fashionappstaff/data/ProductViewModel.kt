@@ -1,15 +1,22 @@
 package my.com.fashionapp.data
 
+import androidx.annotation.DrawableRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
+import java.util.*
 
 class ProductViewModel : ViewModel() {
 
     private val col = Firebase.firestore.collection("products")
     private val products = MutableLiveData<List<Product>>()
+
+    data class Category (
+        var id: String,
+        var name: String,
+    )
 
     init {
         col.addSnapshotListener { snap, _ -> products.value = snap?.toObjects()  }
@@ -35,6 +42,11 @@ class ProductViewModel : ViewModel() {
 
     // Calculate the size of products list
     fun calSize() = products.value?.size ?: 0
+
+    val category = listOf(
+        Category("Women", "women"),
+        Category("Men", "men"),
+    )
 
 
 
@@ -70,6 +82,10 @@ class ProductViewModel : ViewModel() {
 
         //Quantity
         e += if (p.productQuan == 0) "- Quantity cannot be 0. \n"
+        else ""
+
+        //Price
+        e += if (p.productPrice == 0.0 ) "- Price cannot be 0.0. \n"
         else ""
 
         //Photo
