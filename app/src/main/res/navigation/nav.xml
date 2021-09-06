@@ -30,4 +30,9 @@
         android:name="my.com.fashionappstaff.ui.BlankFragment"
         android:label="fragment_blank"
         tools:layout="@layout/fragment_blank" />
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="my.com.fashionappstaff.ui.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" />
 </navigation>

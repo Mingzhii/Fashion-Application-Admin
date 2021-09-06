@@ -30,10 +30,10 @@ class ListProductFragment : Fragment() {
         adapter = ProductAdapter() { holder, product ->
             // Item click
             holder.root.setOnClickListener {
-//                nav.navigate(R.id.updateFragment, bundleOf("id" to friend.id))
+                nav.navigate(R.id.updateFragment, bundleOf("id" to product.productId))
             }
             // Delete button click
-//            holder.btnDelete.setOnClickListener { delete(friend.id) }
+            holder.btnDelete.setOnClickListener { delete(product.productId) }
         }
 
         binding.rv.adapter = adapter
@@ -48,5 +48,9 @@ class ListProductFragment : Fragment() {
         return binding.root
     }
 
+    private fun delete(id: String) {
+        // TODO: Delete
+        vm.delete(id)
+    }
 
 }

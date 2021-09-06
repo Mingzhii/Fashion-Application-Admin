@@ -27,7 +27,7 @@ class ProductAdapter (val fn: (ViewHolder, Product) -> Unit = { _, _ -> })
         val txtDescrip   : TextView = view.findViewById(R.id.txtDesciprion)
         val txtPrice     : TextView = view.findViewById(R.id.txtProductPrice)
 //        val txtId      : TextView = view.findViewById(R.id.txtId)
-//        val btnDelete: Button = view.findViewById(R.id.btnDelete)
+        val btnDelete: Button = view.findViewById(R.id.btnDelete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -43,7 +43,7 @@ class ProductAdapter (val fn: (ViewHolder, Product) -> Unit = { _, _ -> })
 //        holder.txtId.text   = friend.id
         holder.txtName.text = product.productName
         holder.txtDescrip.text  = product.productDescrip
-        holder.txtPrice.text  = product.productPrice.toString()
+        holder.txtPrice.text  = "RM %.2f".format(product.productPrice)
 
         // TODO: Photo (blob to bitmap)a
         holder.imgPhoto.setImageBitmap(product.productPhoto.toBitmap())
