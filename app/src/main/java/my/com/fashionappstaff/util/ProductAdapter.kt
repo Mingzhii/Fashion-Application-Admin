@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import my.com.fashionapp.data.Product
 import my.com.fashionappstaff.R
+import my.com.fashionappstaff.data.Product
 
 class ProductAdapter (val fn: (ViewHolder, Product) -> Unit = { _, _ -> })
     :  ListAdapter<Product, ProductAdapter.ViewHolder>(DiffCallback) {

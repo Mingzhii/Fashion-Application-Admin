@@ -27,6 +27,8 @@ class ListProductFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentListProductBinding.inflate(inflater, container, false)
 
+        binding.imgBack.setOnClickListener { nav.navigateUp() }
+
         adapter = ProductAdapter() { holder, product ->
             // Item click
             holder.root.setOnClickListener {

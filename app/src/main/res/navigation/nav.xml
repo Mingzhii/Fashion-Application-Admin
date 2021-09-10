@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/blankFragment">
+    app:startDestination="@id/signInFragment">
 
     <fragment
         android:id="@+id/signUpFragment"
@@ -35,4 +35,44 @@
         android:name="my.com.fashionappstaff.ui.UpdateFragment"
         android:label="fragment_update"
         tools:layout="@layout/fragment_update" />
+    <fragment
+        android:id="@+id/insertRewardFragment"
+        android:name="my.com.fashionappstaff.ui.InsertRewardFragment"
+        android:label="fragment_insert_reward"
+        tools:layout="@layout/fragment_insert_reward" />
+    <fragment
+        android:id="@+id/listRewardFragment"
+        android:name="my.com.fashionappstaff.ui.ListRewardFragment"
+        android:label="fragment_list_reward"
+        tools:layout="@layout/fragment_list_reward" />
+    <fragment
+        android:id="@+id/updateRewardFragment"
+        android:name="my.com.fashionappstaff.ui.UpdateRewardFragment"
+        android:label="fragment_update_reward"
+        tools:layout="@layout/fragment_update_reward" />
+    <fragment
+        android:id="@+id/setUpStaffProfileFragment"
+        android:name="my.com.fashionappstaff.ui.SetUpStaffProfileFragment"
+        android:label="fragment_set_up_staff_profile"
+        tools:layout="@layout/fragment_set_up_staff_profile" />
+    <fragment
+        android:id="@+id/staffHomeFragment"
+        android:name="my.com.fashionappstaff.ui.StaffHomeFragment"
+        android:label="fragment_staff_home"
+        tools:layout="@layout/fragment_staff_home" />
+    <fragment
+        android:id="@+id/staffProfileFragment"
+        android:name="my.com.fashionappstaff.ui.StaffProfileFragment"
+        android:label="fragment_staff_profile"
+        tools:layout="@layout/fragment_staff_profile" />
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="my.com.fashionappstaff.ui.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" />
+    <fragment
+        android:id="@+id/rewardFragment"
+        android:name="my.com.fashionappstaff.ui.RewardFragment"
+        android:label="fragment_reward"
+        tools:layout="@layout/fragment_reward" />
 </navigation>

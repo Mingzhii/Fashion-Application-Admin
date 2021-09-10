@@ -12,9 +12,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.Blob
-import my.com.fashionapp.data.Product
 import my.com.fashionapp.data.ProductViewModel
 import my.com.fashionappstaff.R
+import my.com.fashionappstaff.data.Product
 import my.com.fashionappstaff.databinding.FragmentUpdateBinding
 import my.com.fashionappstaff.util.cropToBlob
 import my.com.fashionappstaff.util.errorDialog
@@ -74,7 +74,6 @@ class UpdateFragment : Fragment() {
         binding.edtProductDescrip.editText?.setText(p.productDescrip)
         binding.edtProductPrice.editText?.setText("%.2f".format(p.productPrice))
 
-        // Set Position Got Problem
         val position = check(p.productCategory)
         binding.spCategory.setSelection(position)
 

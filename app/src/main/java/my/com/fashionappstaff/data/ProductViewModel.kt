@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
+import my.com.fashionappstaff.data.Product
 import java.util.*
 
 class ProductViewModel : ViewModel() {

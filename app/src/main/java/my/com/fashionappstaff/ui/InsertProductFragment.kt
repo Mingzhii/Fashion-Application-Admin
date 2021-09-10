@@ -12,9 +12,9 @@ import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import my.com.fashionapp.data.Product
 import my.com.fashionapp.data.ProductViewModel
 import my.com.fashionappstaff.R
+import my.com.fashionappstaff.data.Product
 import my.com.fashionappstaff.databinding.FragmentInsertProductBinding
 import my.com.fashionappstaff.util.SpinnerExtension
 import my.com.fashionappstaff.util.cropToBlob
@@ -40,11 +40,9 @@ class InsertProductFragment : Fragment() {
 
         vm.getAll()
 
-
-
         binding.imgProduct.setOnClickListener { selectImage() }
         binding.btnDone.setOnClickListener { submit() }
-
+        binding.imgProductBack.setOnClickListener { nav.navigateUp() }
 
         return binding.root
     }
