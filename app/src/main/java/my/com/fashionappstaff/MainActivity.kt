@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_home -> nav.navigate(R.id.staffHomeFragment)
-                R.id.nav_product -> nav.navigate(R.id.productFragment)
-                R.id.nav_reward -> nav.navigate(R.id.rewardFragment)
-                R.id.nav_profile -> nav.navigate(R.id.staffProfileFragment)
+                R.id.nav_home -> nav.navigate(R.id.action_global_staffHomeFragment)
+                R.id.nav_product -> nav.navigate(R.id.action_global_productFragment)
+                R.id.nav_reward -> nav.navigate(R.id.action_global_rewardFragment)
+                R.id.nav_profile -> nav.navigate(R.id.action_global_staffProfileFragment)
             }
             true
         }

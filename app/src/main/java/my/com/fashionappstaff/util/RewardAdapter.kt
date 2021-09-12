@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import my.com.fashionappstaff.R
-import my.com.fashionappstaff.data.Product
 import my.com.fashionappstaff.data.Reward
 
 
@@ -28,7 +27,7 @@ class RewardAdapter (val fn: (ViewHolder, Reward) -> Unit = { _, _ -> } )
         val txtRewardName : TextView = view.findViewById(R.id.txtRewardName)
         val txtRewardQuantity : TextView = view.findViewById(R.id.txtRewardQuantity)
         val txtPoint     : TextView = view.findViewById(R.id.txtRewardPoint)
-        val btnDelete: Button = view.findViewById(R.id.btnDelete)
+        val btnDelete: Button = view.findViewById(R.id.btnListRewardDelete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RewardAdapter.ViewHolder {

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import my.com.fashionappstaff.R
 import my.com.fashionappstaff.databinding.FragmentRewardBinding
 
@@ -20,6 +21,8 @@ class RewardFragment : Fragment() {
         binding = FragmentRewardBinding.inflate(inflater, container, false)
 
         // TODO
+        val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
+        btn.visibility = View.VISIBLE
 
         binding.btnAddReward.setOnClickListener { nav.navigate(R.id.insertRewardFragment) }
 

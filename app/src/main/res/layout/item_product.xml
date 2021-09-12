@@ -75,13 +75,13 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+                app:layout_constraintEnd_toStartOf="@+id/btnListProductDelete"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imgProductPic"
                 tools:text="RM 100.00" />
 
             <Button
-                android:id="@+id/btnDelete"
+                android:id="@+id/btnListProductDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -89,6 +89,7 @@
                 android:paddingHorizontal="8dp"
                 app:icon="@drawable/ic_delete"
                 app:iconPadding="0dp"
+                app:iconTint="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtDesciprion"

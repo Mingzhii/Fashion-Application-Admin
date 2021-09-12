@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import my.com.fashionappstaff.R
 import my.com.fashionappstaff.databinding.FragmentProductBinding
 
@@ -19,6 +20,9 @@ class ProductFragment : Fragment() {
         binding = FragmentProductBinding.inflate(inflater, container, false)
 
         // TODO
+
+        val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
+        btn.visibility = View.VISIBLE
 
         binding.btnAddProduct.setOnClickListener { nav.navigate(R.id.insertProductFragment) }
 

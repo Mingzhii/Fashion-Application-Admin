@@ -37,7 +37,7 @@ class SignUpFragment : Fragment() {
         val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         btn.visibility = View.GONE
 
-        binding.btnRegisterBack.setOnClickListener { nav.navigateUp() }
+        binding.btnRegisterBack.setOnClickListener { nav.navigate(R.id.action_signUpFragment_to_staffProfileFragment) }
 
         binding.btnRegister.setOnClickListener {
 

@@ -10,46 +10,49 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import my.com.fashionapp.data.ProductViewModel
+import my.com.fashionapp.data.UserViewModel
 import my.com.fashionappstaff.R
-import my.com.fashionappstaff.databinding.FragmentListProductBinding
-import my.com.fashionappstaff.util.ProductAdapter
+import my.com.fashionappstaff.databinding.FragmentListUserBinding
+import my.com.fashionappstaff.util.RewardAdapter
+import my.com.fashionappstaff.util.UserAdapter
 
+class ListUserFragment : Fragment() {
 
-class ListProductFragment : Fragment() {
-
-    private lateinit var binding: FragmentListProductBinding
+    private lateinit var binding: FragmentListUserBinding
     private val nav by lazy { findNavController() }
-    private val vm: ProductViewModel by activityViewModels()
+    private val vm: UserViewModel by activityViewModels()
 
-    private lateinit var adapter: ProductAdapter
+    private lateinit var adapter: UserAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        binding = FragmentListProductBinding.inflate(inflater, container, false)
+        binding = FragmentListUserBinding.inflate(inflater, container, false)
 
-        binding.imgListProductBack.setOnClickListener { nav.navigate(R.id.action_listProductFragment_to_productFragment) }
+        // TODO
+        vm.getAll()
+
+        binding.imgListUserBack.setOnClickListener { nav.navigate(R.id.action_listUserFragment_to_staffProfileFragment) }
 
         val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         btn.visibility = View.GONE
 
-        adapter = ProductAdapter() { holder, product ->
+        // Recycle Holder
+        adapter = UserAdapter() { holder, user ->
             // Item click
             holder.root.setOnClickListener {
-                nav.navigate(R.id.updateFragment, bundleOf("id" to product.productId))
+                nav.navigate(R.id.updateUserFragment, bundleOf("id" to user.userId))
             }
             // Delete button click
-            holder.btnDelete.setOnClickListener { delete(product.productId) }
+            holder.btnDelete.setOnClickListener { delete(user.userId) }
         }
 
         binding.rv.adapter = adapter
         binding.rv.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
-        vm.getAll().observe(viewLifecycleOwner) { list ->
-            adapter.submitList(list)
-            binding.txtItem.text = "${list.size} product(s)"
+       vm.getAllStaffs().observe(viewLifecycleOwner) { list ->
+           adapter.submitList(list)
+           binding.txtItem.text = "${list.size} Staff(s)"
         }
-
 
         return binding.root
     }

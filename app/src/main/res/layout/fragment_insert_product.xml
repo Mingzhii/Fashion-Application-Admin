@@ -17,7 +17,7 @@
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgProductBack"
+        app:layout_constraintTop_toBottomOf="@+id/imgInsertProductBack"
         tools:src="@tools:sample/avatars" />
 
     <ScrollView
@@ -215,7 +215,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imgProductBack"
+        android:id="@+id/imgInsertProductBack"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginStart="20dp"

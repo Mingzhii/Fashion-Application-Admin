@@ -60,7 +60,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="sans-serif"
                     android:inputType="textEmailAddress"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    tools:ignore="TextContrastCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,7 +89,8 @@
                     android:layout_height="match_parent"
                     android:fontFamily="sans-serif"
                     android:inputType="textPassword"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    tools:ignore="TextContrastCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

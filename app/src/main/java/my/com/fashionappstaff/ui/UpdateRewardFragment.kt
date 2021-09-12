@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.Blob
 import my.com.fashionapp.data.ProductViewModel
 import my.com.fashionappstaff.R
@@ -42,11 +43,14 @@ class UpdateRewardFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentUpdateRewardBinding.inflate(inflater, container, false)
 
+        val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
+        btn.visibility = View.GONE
+
         //TODO
         reset()
-        binding.imgBack.setOnClickListener { nav.navigate(R.id.listRewardFragment) }
+        binding.imgUpdateRewardBack.setOnClickListener { nav.navigate(R.id.action_updateRewardFragment_to_listRewardFragment) }
         binding.imgReward.setOnClickListener { select() }
-        binding.btnSubmit.setOnClickListener { update() }
+        binding.btnRewardUpdateSubmit.setOnClickListener { update() }
 
         val formate = SimpleDateFormat("dd MMM, YYYY", Locale.US)
 

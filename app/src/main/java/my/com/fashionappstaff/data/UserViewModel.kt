@@ -24,8 +24,8 @@ class UserViewModel : ViewModel() {
 
     //init block will always run before the constructor
     init {
-        col.addSnapshotListener { snap, _ -> users.value = snap?.toObjects()  }
-        staffs.value = users.value?.filter { t -> t.userType == "Staff" }
+        col.addSnapshotListener { snap, _ -> users.value = snap?.toObjects()
+        staffs.value = users.value?.filter { t -> t.userType == "Staff" }}
     }
 
     // Remove snapshot listener when view model is destroyed
@@ -56,6 +56,8 @@ class UserViewModel : ViewModel() {
     fun getAllStaffs() = staffs
 
     //Get Users
+    fun getAll() = users
+
     fun get(id : String): User?{
         return users.value?.find { u -> u.userId == id }
     }
@@ -67,8 +69,6 @@ class UserViewModel : ViewModel() {
     fun getUserPhoto2(email: String): User?{
         return users.value?.find { u -> u.email == email }
     }
-
-    fun getAll() = users
 
     fun delete(id : String){
         col.document(id).delete()

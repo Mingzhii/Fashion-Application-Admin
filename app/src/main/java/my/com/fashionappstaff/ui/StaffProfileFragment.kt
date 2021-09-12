@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import my.com.fashionapp.data.UserViewModel
 import my.com.fashionappstaff.R
 import my.com.fashionappstaff.data.User
@@ -25,6 +26,10 @@ class StaffProfileFragment : Fragment() {
         binding = FragmentStaffProfileBinding.inflate(inflater, container, false)
 
         //TODO
+
+        val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
+        btn.visibility = View.VISIBLE
+
         val email = email1
 
         val u = vm.getUserType(email)
@@ -34,14 +39,18 @@ class StaffProfileFragment : Fragment() {
         if (u != null) {
             if(u.userType == "Admin"){
                 binding.conLayout.visibility = View.VISIBLE
+                binding.conManagerUser.visibility = View.VISIBLE
             }
             else{
                 binding.conLayout.visibility = View.GONE
+                binding.conManagerUser.visibility = View.GONE
             }
         }
 
         binding.conLayLogout.setOnClickListener { logout() }
         binding.conLayout.setOnClickListener { nav.navigate(R.id.signUpFragment) }
+        binding.conLayUpdateProfile.setOnClickListener { nav.navigate(R.id.updateUserProfileFragment) }
+        binding.conManagerUser.setOnClickListener { nav.navigate(R.id.listUserFragment) }
 
         return binding.root
     }

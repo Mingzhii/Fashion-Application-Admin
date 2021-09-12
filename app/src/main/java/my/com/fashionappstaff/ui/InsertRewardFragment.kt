@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.Blob
 import kotlinx.coroutines.selects.select
 import my.com.fashionapp.data.ProductViewModel
@@ -40,15 +41,18 @@ class InsertRewardFragment : Fragment() {
         binding = FragmentInsertRewardBinding.inflate(inflater, container, false)
 
         //TODO
+        val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
+        btn.visibility = View.GONE
+
         vm.getAll()
 
         binding.imgRewardPic.setOnClickListener { selectImage() }
-        binding.btnSubmit.setOnClickListener { submit() }
-        binding.imgBack.setOnClickListener { nav.navigateUp() }
+        binding.btnInsertRewardDone.setOnClickListener { submit() }
+        binding.imgInsertRewardBack.setOnClickListener { nav.navigate(R.id.action_insertRewardFragment_to_rewardFragment) }
 
         val formate = SimpleDateFormat("dd MMM, YYYY", Locale.US)
 
-        binding.btnExpiryDate.setOnClickListener {
+        binding.btnExpiryDate.setOnClickListener { it ->
             val currentDate = Calendar.getInstance()
             val datePicker = DatePickerDialog(it.context , DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
                 val selectedDate = Calendar.getInstance()
@@ -60,6 +64,7 @@ class InsertRewardFragment : Fragment() {
             },
                 currentDate.get(Calendar.YEAR),currentDate.get(Calendar.MONTH),currentDate.get(Calendar.DAY_OF_MONTH))
             datePicker.show()
+
         }
 
         return binding.root

@@ -9,7 +9,13 @@
         android:id="@+id/signUpFragment"
         android:name="my.com.fashionappstaff.ui.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_staffProfileFragment"
+            app:destination="@id/staffProfileFragment"
+            app:popUpTo="@id/staffProfileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/signInFragment"
         android:name="my.com.fashionappstaff.ui.SignInFragment"
@@ -19,37 +25,79 @@
         android:id="@+id/insertProductFragment"
         android:name="my.com.fashionappstaff.ui.InsertProductFragment"
         android:label="fragment_insert_product"
-        tools:layout="@layout/fragment_insert_product" />
+        tools:layout="@layout/fragment_insert_product" >
+        <action
+            android:id="@+id/action_insertProductFragment_to_productFragment"
+            app:destination="@id/productFragment"
+            app:popUpTo="@id/productFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/listProductFragment"
         android:name="my.com.fashionappstaff.ui.ListProductFragment"
         android:label="fragment_list_product"
-        tools:layout="@layout/fragment_list_product" />
+        tools:layout="@layout/fragment_list_product" >
+        <action
+            android:id="@+id/action_listProductFragment_to_productFragment"
+            app:destination="@id/productFragment"
+            app:popUpTo="@id/productFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
-        android:id="@+id/blankFragment"
-        android:name="my.com.fashionappstaff.ui.BlankFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" />
+        android:id="@+id/listUserFragment"
+        android:name="my.com.fashionappstaff.ui.ListUserFragment"
+        android:label="fragment_list_user"
+        tools:layout="@layout/fragment_list_user" >
+        <action
+            android:id="@+id/action_listUserFragment_to_staffProfileFragment"
+            app:destination="@id/staffProfileFragment"
+            app:popUpTo="@id/staffProfileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/updateFragment"
         android:name="my.com.fashionappstaff.ui.UpdateFragment"
         android:label="fragment_update"
-        tools:layout="@layout/fragment_update" />
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_listProductFragment"
+            app:destination="@id/listProductFragment"
+            app:popUpTo="@id/listProductFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/insertRewardFragment"
         android:name="my.com.fashionappstaff.ui.InsertRewardFragment"
         android:label="fragment_insert_reward"
-        tools:layout="@layout/fragment_insert_reward" />
+        tools:layout="@layout/fragment_insert_reward" >
+        <action
+            android:id="@+id/action_insertRewardFragment_to_rewardFragment"
+            app:destination="@id/rewardFragment"
+            app:popUpTo="@id/rewardFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/listRewardFragment"
         android:name="my.com.fashionappstaff.ui.ListRewardFragment"
         android:label="fragment_list_reward"
-        tools:layout="@layout/fragment_list_reward" />
+        tools:layout="@layout/fragment_list_reward" >
+        <action
+            android:id="@+id/action_listRewardFragment_to_rewardFragment"
+            app:destination="@id/rewardFragment"
+            app:popUpTo="@id/rewardFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/updateRewardFragment"
         android:name="my.com.fashionappstaff.ui.UpdateRewardFragment"
         android:label="fragment_update_reward"
-        tools:layout="@layout/fragment_update_reward" />
+        tools:layout="@layout/fragment_update_reward" >
+        <action
+            android:id="@+id/action_updateRewardFragment_to_listRewardFragment"
+            app:destination="@id/listRewardFragment"
+            app:popUpTo="@id/listRewardFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/setUpStaffProfileFragment"
         android:name="my.com.fashionappstaff.ui.SetUpStaffProfileFragment"
@@ -75,4 +123,46 @@
         android:name="my.com.fashionappstaff.ui.RewardFragment"
         android:label="fragment_reward"
         tools:layout="@layout/fragment_reward" />
+    <fragment
+        android:id="@+id/updateUserFragment"
+        android:name="my.com.fashionappstaff.ui.UpdateUserFragment"
+        android:label="fragment_update_user"
+        tools:layout="@layout/fragment_update_user" >
+        <action
+            android:id="@+id/action_updateUserFragment_to_listUserFragment"
+            app:destination="@id/listUserFragment"
+            app:popUpTo="@id/listUserFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_staffHomeFragment"
+        app:destination="@id/staffHomeFragment"
+        app:popUpTo="@id/staffHomeFragment"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_productFragment"
+        app:destination="@id/productFragment"
+        app:popUpTo="@id/productFragment"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_rewardFragment"
+        app:destination="@id/rewardFragment"
+        app:popUpTo="@id/rewardFragment"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_staffProfileFragment"
+        app:destination="@id/staffProfileFragment"
+        app:popUpTo="@id/staffProfileFragment"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/updateUserProfileFragment"
+        android:name="my.com.fashionappstaff.ui.UpdateUserProfileFragment"
+        android:label="fragment_update_user_profile"
+        tools:layout="@layout/fragment_update_user_profile" >
+        <action
+            android:id="@+id/action_updateUserProfileFragment_to_staffProfileFragment"
+            app:destination="@id/staffProfileFragment"
+            app:popUpTo="@id/staffProfileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

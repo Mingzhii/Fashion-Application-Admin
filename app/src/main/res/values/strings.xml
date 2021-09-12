@@ -18,4 +18,9 @@
     <string name="quantity">Quantity</string>
     <string name="product_price">Product Price</string>
     <string name="enter_product_name">Enter Product Name</string>
+
+    <string-array name="role">
+        <item>Admin</item>
+        <item>Staff</item>
+    </string-array>
 </resources>

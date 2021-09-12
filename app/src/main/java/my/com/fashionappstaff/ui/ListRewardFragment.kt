@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import my.com.fashionappstaff.R
 import my.com.fashionappstaff.data.RewardViewModel
 import my.com.fashionappstaff.databinding.FragmentListRewardBinding
@@ -28,7 +29,10 @@ class ListRewardFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentListRewardBinding.inflate(inflater, container, false)
 
-        binding.imgBack.setOnClickListener { nav.navigateUp() }
+        binding.imgListRewardBack.setOnClickListener { nav.navigate(R.id.action_listRewardFragment_to_rewardFragment) }
+
+        val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
+        btn.visibility = View.GONE
 
         adapter = RewardAdapter() { holder, reward ->
             // Item click

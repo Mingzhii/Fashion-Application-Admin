@@ -1,5 +1,6 @@
 package my.com.fashionappstaff.util
 
+import android.location.LocationManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +28,7 @@ class ProductAdapter (val fn: (ViewHolder, Product) -> Unit = { _, _ -> })
         val txtDescrip   : TextView = view.findViewById(R.id.txtDesciprion)
         val txtPrice     : TextView = view.findViewById(R.id.txtProductPrice)
 //        val txtId      : TextView = view.findViewById(R.id.txtId)
-        val btnDelete: Button = view.findViewById(R.id.btnDelete)
+        val btnDelete: Button = view.findViewById(R.id.btnListProductDelete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
