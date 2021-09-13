@@ -5,6 +5,8 @@ import com.google.firebase.firestore.DocumentId
 import java.util.*
 
 var email1 : String = ""
+var username : String = ""
+var img : Blob = Blob.fromBytes(ByteArray(0))
 
 data class Reward(
     @DocumentId

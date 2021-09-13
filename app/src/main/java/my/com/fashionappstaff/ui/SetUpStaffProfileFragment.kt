@@ -45,6 +45,7 @@ class SetUpStaffProfileFragment : Fragment() {
     private fun submit() {
 
         val id = "USER00" + (vm.calSize() + 1).toString()
+
         val u = User(
             userId = id,
             email = email,

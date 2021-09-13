@@ -105,11 +105,11 @@ class UpdateFragment : Fragment() {
             productPhoto = binding.imgProductPict.cropToBlob(300,300),
         )
 
-        val err = vm.validate(p, false)
-        if (err != ""){
-            errorDialog(err)
-            return
-        }
+//        val err = vm.validate(p, false)
+//        if (err != ""){
+//            errorDialog(err)
+//            return
+//        }
 
         vm.set(p)
         nav.navigateUp()

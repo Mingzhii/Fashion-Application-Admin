@@ -8,10 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.Blob
 import my.com.fashionapp.data.UserViewModel
 import my.com.fashionappstaff.R
 import my.com.fashionappstaff.data.User
 import my.com.fashionappstaff.data.email1
+import my.com.fashionappstaff.data.img
+import my.com.fashionappstaff.data.username
 import my.com.fashionappstaff.databinding.FragmentStaffProfileBinding
 import my.com.fashionappstaff.util.toBitmap
 
@@ -36,6 +40,8 @@ class StaffProfileFragment : Fragment() {
 
         getImage(email)
 
+
+
         if (u != null) {
             if(u.userType == "Admin"){
                 binding.conLayout.visibility = View.VISIBLE
@@ -56,6 +62,9 @@ class StaffProfileFragment : Fragment() {
     }
     private fun logout():Boolean {
         // Logout -> vm.logout
+        img = Blob.fromBytes(ByteArray(0))
+        username = ""
+        FirebaseAuth.getInstance().signOut()
         val ctx = requireActivity()
         vm.logout(ctx)
         nav.popBackStack(R.id.signInFragment, false)
@@ -72,9 +81,24 @@ class StaffProfileFragment : Fragment() {
     }
 
     private fun load (u: User){
-        binding.imgUserPic.setImageBitmap(u.userPhoto.toBitmap())
-        binding.txtUsername.text = u.userName
-        binding.txtEditProfile.text = u.userType
+
+        if (img == Blob.fromBytes(ByteArray(0)) && username == ""){
+            if(u != null){
+                binding.imgUserPic.setImageBitmap(u.userPhoto.toBitmap())
+                binding.txtUsername.text = u.userName
+                binding.txtEditProfile.text = u.userType
+            }
+        }else if(img == Blob.fromBytes(ByteArray(0))){
+            if(u != null){
+                binding.imgUserPic.setImageBitmap(u.userPhoto.toBitmap())
+                binding.txtUsername.text = username
+                binding.txtEditProfile.text = u.userType
+            }
+        }else{
+            binding.imgUserPic.setImageBitmap(img.toBitmap())
+            binding.txtUsername.text = username
+            binding.txtEditProfile.text = u.userType
+        }
     }
 
 }

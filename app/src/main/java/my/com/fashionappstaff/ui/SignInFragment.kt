@@ -37,12 +37,6 @@ class SignInFragment : Fragment() {
             val email = binding.edtLoginEmail.editText?.text.toString().trim()
             val password = binding.edtLoginPassword.editText?.text.toString().trim()
 
-//            val err = vm.validation(email, password)
-//            email1 = email
-//            if (err != ""){
-//                errorDialog(err)
-//            }
-                // Sign In using FirebaseAuth
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener { t ->
                         if (t.isSuccessful) {

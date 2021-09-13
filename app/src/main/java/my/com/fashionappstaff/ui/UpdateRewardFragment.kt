@@ -83,12 +83,13 @@ class UpdateRewardFragment : Fragment() {
             rewardPhoto   = binding.imgReward.cropToBlob(300,300),
         )
 
-        val err = vm.validate(r, false)
+//        val err = vm.validate(r, false)
+//
+//        if (err != ""){
+//            errorDialog(err)
+//            return
+//        }
 
-        if (err != ""){
-            errorDialog(err)
-            return
-        }
         vm.set(r)
         nav.navigateUp()
     }
