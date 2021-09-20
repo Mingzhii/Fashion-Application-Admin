@@ -21,6 +21,7 @@ import my.com.fashionappstaff.data.RewardViewModel
 import my.com.fashionappstaff.databinding.FragmentInsertRewardBinding
 import my.com.fashionappstaff.util.cropToBlob
 import my.com.fashionappstaff.util.errorDialog
+import my.com.fashionappstaff.util.informationDialog
 import my.com.fashionappstaff.util.snackbar
 import java.text.SimpleDateFormat
 import java.util.*
@@ -97,7 +98,7 @@ class InsertRewardFragment : Fragment() {
             return
         }else{
             val err = "Done"
-            errorDialog(err)
+            informationDialog(err)
             vm.set(r)
         }
 
