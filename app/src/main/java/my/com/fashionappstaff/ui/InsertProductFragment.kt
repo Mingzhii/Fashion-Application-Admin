@@ -44,11 +44,21 @@ class InsertProductFragment : Fragment() {
 
         vm.getAll()
 
+
         binding.imgProduct.setOnClickListener { selectImage() }
         binding.btnDone.setOnClickListener { submit() }
         binding.imgInsertProductBack.setOnClickListener { nav.navigate(R.id.action_insertProductFragment_to_productFragment) }
 
         return binding.root
+    }
+
+    private fun clear() {
+        binding.edtProductName.editText?.setText("")
+        binding.edtProductDescrip.editText?.setText("")
+        binding.edtProductQuantity.editText?.setText("")
+        binding.edtProductPrice.editText?.setText("")
+        binding.spCategory.setSelection(0)
+        binding.imgProduct.setImageResource(0)
     }
 
     private fun selectImage() {
@@ -60,9 +70,11 @@ class InsertProductFragment : Fragment() {
     private fun submit() {
         var category = binding.spCategory.selectedItem.toString()
 
-        val id = "PROD00" + (vm.calSize() + 1).toString()
+        val id = "PROD" + (vm.calSize() + 1).toString()
+        var chkID = vm.validID()
+
         val p = Product(
-            productId = id,
+            productId = chkID,
             productName = binding.edtProductName.editText?.text.toString().trim(),
             productDescrip = binding.edtProductDescrip.editText?.text.toString().trim(),
             productQuan = binding.edtProductQuantity.editText?.text.toString().toIntOrNull() ?: 0,
@@ -79,10 +91,14 @@ class InsertProductFragment : Fragment() {
             val err = "Done"
             errorDialog(err)
             vm.set(p)
+
+            clear()
         }
 
 
     }
+
+
 
 
 

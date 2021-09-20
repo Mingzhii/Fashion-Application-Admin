@@ -1,6 +1,7 @@
 package my.com.fashionappstaff.ui
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -44,9 +45,10 @@ class UpdateUserProfileFragment : Fragment() {
         val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         btn.visibility = View.GONE
 
-        val email = email1
+        val preferences = activity?.getSharedPreferences("email", Context.MODE_PRIVATE)
+        val emailLogin = preferences?.getString("emailLogin","")
 
-        val u = vm.getUserPhoto2(email)
+        val u = emailLogin?.let { vm.getUserPhoto2(it) }
         if (u != null) {
             load(u)
         }

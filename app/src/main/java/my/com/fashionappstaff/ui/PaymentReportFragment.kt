@@ -6,37 +6,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import my.com.fashionapp.data.ProductViewModel
+import my.com.fashionapp.data.UserViewModel
 import my.com.fashionappstaff.R
-import my.com.fashionappstaff.databinding.FragmentListProductBinding
-import my.com.fashionappstaff.util.ProductAdapter
+import my.com.fashionappstaff.data.CartViewModel
+import my.com.fashionappstaff.databinding.FragmentPaymentReportBinding
+import my.com.fashionappstaff.util.HistoryAdapter
 
 
-class ListProductFragment : Fragment() {
+class PaymentReportFragment : Fragment() {
 
-    private lateinit var binding: FragmentListProductBinding
-    private val nav by lazy { findNavController() }
-    private val vm: ProductViewModel by activityViewModels()
+    private lateinit var binding: FragmentPaymentReportBinding
+    private val nav by lazy{ findNavController() }
+    private val vm: CartViewModel by activityViewModels()
+    private val vmU: UserViewModel by activityViewModels()
 
-    private lateinit var adapter: ProductAdapter
+    private lateinit var adapter: HistoryAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        binding = FragmentListProductBinding.inflate(inflater, container, false)
+        binding = FragmentPaymentReportBinding.inflate(inflater, container, false)
 
         vm.search("")
-
-        binding.imgListProductBack.setOnClickListener { nav.navigate(R.id.action_listProductFragment_to_productFragment) }
 
         val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         btn.visibility = View.GONE
 
-        binding.edtSearchProduct.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.edtSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(name: String) = true
             override fun onQueryTextChange(name: String): Boolean {
                 vm.search(name)
@@ -44,30 +43,31 @@ class ListProductFragment : Fragment() {
             }
         })
 
-        adapter = ProductAdapter() { holder, product ->
+
+        adapter = HistoryAdapter() { holder, cart ->
             // Item click
-            holder.root.setOnClickListener {
-                nav.navigate(R.id.updateFragment, bundleOf("id" to product.productId))
-            }
-            // Delete button click
-            holder.btnDelete.setOnClickListener { delete(product.productId) }
+            var totalprice = 0.0
+            val productPrice = holder.txtPrice.text.toString().toDouble()
+            val productQuantity = holder.txtQuantity.text.toString().toInt()
+            val subtotal = productPrice * productQuantity.toString().toDouble()
+            totalprice += subtotal
+
+            binding.txtSubtotal.text = "%.2f".format(totalprice)
         }
 
         binding.rv.adapter = adapter
         binding.rv.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         vm.getResult().observe(viewLifecycleOwner) { list ->
-            adapter.submitList(list)
-            binding.txtItem.text = "${list.size} product(s)"
+
+            var cartArray = list.filter { c ->
+                c.cartStatus == "Done The Payment"
+            }
+            adapter.submitList(cartArray)
         }
 
 
         return binding.root
-    }
-
-    private fun delete(id: String) {
-        // TODO: Delete
-        vm.delete(id)
     }
 
 }

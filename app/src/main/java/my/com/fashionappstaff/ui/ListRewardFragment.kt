@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -29,10 +30,20 @@ class ListRewardFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentListRewardBinding.inflate(inflater, container, false)
 
+        vm.search("")
+
         binding.imgListRewardBack.setOnClickListener { nav.navigate(R.id.action_listRewardFragment_to_rewardFragment) }
 
         val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         btn.visibility = View.GONE
+
+        binding.edtSearchReward.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(name: String) = true
+            override fun onQueryTextChange(name: String): Boolean {
+                vm.search(name)
+                return true
+            }
+        })
 
         adapter = RewardAdapter() { holder, reward ->
             // Item click
@@ -46,7 +57,7 @@ class ListRewardFragment : Fragment() {
         binding.rv.adapter = adapter
         binding.rv.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
-        vm.getAll().observe(viewLifecycleOwner) { list ->
+        vm.getResult().observe(viewLifecycleOwner) { list ->
             adapter.submitList(list)
             binding.txtItem.text = "${list.size} reward(s)"
         }

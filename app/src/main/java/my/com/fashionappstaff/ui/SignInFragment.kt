@@ -1,5 +1,7 @@
 package my.com.fashionappstaff.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +13,10 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import my.com.fashionapp.data.UserViewModel
+import my.com.fashionappstaff.MainActivity
 import my.com.fashionappstaff.R
 import my.com.fashionappstaff.data.email1
+import my.com.fashionappstaff.data.username
 import my.com.fashionappstaff.databinding.FragmentSignInBinding
 import my.com.fashionappstaff.util.errorDialog
 
@@ -33,27 +37,88 @@ class SignInFragment : Fragment() {
         val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         btn.visibility = View.GONE
 
+        val preferences = activity?.getSharedPreferences("checkBo", Context.MODE_PRIVATE)
+        val checkbox = preferences?.getString("remember","")
+
+        if (checkbox == "true") {
+            vm.getAll()
+            nav.navigate(R.id.staffHomeFragment)
+        }else if(checkbox == "false"){
+            super.onCreate(savedInstanceState)
+        }
+
+        binding.btnForgetPassword.setOnClickListener { nav.navigate(R.id.forgetPasswordFragment) }
+        // Check Box Remember Me need to do
+        binding.chkRememberMe.setOnCheckedChangeListener { compoundButton, b ->
+            if(compoundButton.isChecked){
+                val sharedPref = activity?.getSharedPreferences("checkBo", Context.MODE_PRIVATE)
+                val editor : SharedPreferences.Editor = sharedPref!!.edit()
+                editor.putString("remember","true")
+                editor.apply()
+            }
+            else if (!compoundButton.isChecked){
+                val sharedPref = activity?.getSharedPreferences("checkBo", Context.MODE_PRIVATE)
+                val editor : SharedPreferences.Editor = sharedPref!!.edit()
+                editor.putString("remember","false")
+                editor.apply()
+            }
+        }
+
         binding.btnLogin.setOnClickListener {
             val email = binding.edtLoginEmail.editText?.text.toString().trim()
             val password = binding.edtLoginPassword.editText?.text.toString().trim()
 
-                FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener { t ->
-                        if (t.isSuccessful) {
-                            email1 = email
-                            val args = bundleOf(
-                                "email" to email
-                            )
-                            nav.navigate(R.id.staffHomeFragment, args)
-                        } else {
-                            // Validation and error
-                            val err = t.exception!!.message.toString()
-                            errorDialog(err)
-                        }
-
+            if (email == "" && password == "") {
+                val err = "Email and Password cannot be empty !"
+                errorDialog(err)
+            } else {
+                login()
             }
         }
         return binding.root
+    }
+
+    private fun login(){
+
+        val email = binding.edtLoginEmail.editText?.text.toString().trim()
+        val password = binding.edtLoginPassword.editText?.text.toString().trim()
+
+        // Sign In using FirebaseAuth
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { t ->
+                if(t.isSuccessful){
+                    email1 = email
+                    val u = vm.getEmail(email1)
+                    if (u != null) {
+                        username = u.userName
+                        username
+                    }
+                    if (u?.userType == "Staff" || u?.userType == "Admin"){
+                        val sharedPref = activity?.getSharedPreferences("email",
+                            Context.MODE_PRIVATE
+                        )
+                        val editor : SharedPreferences.Editor = sharedPref!!.edit()
+                        editor.putString("emailLogin",email)
+                        editor.apply()
+
+                        val args = bundleOf(
+                            "email" to email
+                        )
+                        nav.navigate(R.id.staffHomeFragment, args)
+
+                    } else {
+                        val err = "You do not have no permission ! "
+                        errorDialog(err)
+                        binding.edtLoginPassword.editText?.text?.clear()
+                    }
+
+                }
+                else{
+                    // Validation and error
+                    val err = t.exception!!.message.toString()
+                    errorDialog(err)
+                }
+            }
     }
 
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
+import my.com.fashionappstaff.data.Cart
 import my.com.fashionappstaff.data.Product
 import java.util.*
 
@@ -13,6 +14,9 @@ class ProductViewModel : ViewModel() {
 
     private val col = Firebase.firestore.collection("products")
     private val products = MutableLiveData<List<Product>>()
+    private var searchPro = listOf<Product>()
+    private val result = MutableLiveData<List<Product>>()
+    private var name = "" // for searching purpose
 
     data class Category (
         var id: String,
@@ -20,8 +24,29 @@ class ProductViewModel : ViewModel() {
     )
 
     init {
-        col.addSnapshotListener { snap, _ -> products.value = snap?.toObjects()  }
+        col.addSnapshotListener { snap, _ -> products.value = snap?.toObjects()
+            searchPro = snap!!.toObjects<Product>()
+            updateResult() }
     }
+
+    // Search
+    fun search(name: String){
+        this.name = name
+        updateResult()
+    }
+
+    private fun updateResult() {
+        var list = searchPro
+
+        //Search
+        list = list.filter {
+            it.productName.contains(name, true)
+        }
+
+        result.value = list
+    }
+
+    fun getResult() = result
 
     fun get(id : String): Product?{
         return products.value?.find { p -> p.productId == id }
@@ -53,6 +78,45 @@ class ProductViewModel : ViewModel() {
 
     //-------------------------------------------------------------------
     // Validation
+
+    private fun idExists(id: String): Boolean {
+        return products.value?.any{ p -> p.productId == id } ?: false
+    }
+
+    fun validID(): String {
+        var newID: String
+
+        val getLastProduct = products.value?.lastOrNull()?.productId.toString()
+        val num: String = getLastProduct.substringAfterLast("PROD10")
+        newID = "PROD10" + (num.toIntOrNull()?.plus(1)).toString()
+
+        if (newID == "PROD1010") {
+            newID = "PROD1" + (num.toIntOrNull()?.plus(1)).toString()
+            return newID
+        }
+
+        return when (calSize()) {
+            0 -> {
+                newID = "PROD10" + (calSize() + 1)
+                newID
+            }
+            in 1..8 -> {
+                val getLastProduct = products.value?.lastOrNull()?.productId.toString()
+                val num: String = getLastProduct.substringAfterLast("PROD10")
+                newID = "PROD10" + (num.toIntOrNull()?.plus(1)).toString()
+                if (newID == "PROD10null") {
+                    newID = "PROD111"
+                    newID
+                } else newID
+            }
+            else -> {
+                val getLastProduct = products.value?.lastOrNull()?.productId.toString()
+                val num: String = getLastProduct.substringAfterLast("PROD1")
+                newID = "PROD1" + (num.toIntOrNull()?.plus(1)).toString()
+                newID
+            }
+        }
+    }
 
     private fun nameExists(name: String): Boolean {
         return products.value?.any{ p -> p.productName == name } ?: false

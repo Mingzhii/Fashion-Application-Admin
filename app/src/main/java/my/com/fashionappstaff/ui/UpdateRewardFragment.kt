@@ -78,7 +78,7 @@ class UpdateRewardFragment : Fragment() {
             rewardName  = binding.edtRewardName.editText?.text.toString(),
             rewardDescrip = binding.edtRewardDescription.editText?.text.toString().trim(),
             rewardQuan    = binding.edtRewardQuantity.editText?.text.toString().toIntOrNull() ?: 0,
-            rewardPoint   = binding.edtRewardPoint.editText?.text.toString().toIntOrNull() ?: 0,
+            rewardPoint   = binding.edtRewardPoint.editText?.text.toString().toDoubleOrNull() ?: 0.0,
             expiryDate    = binding.btnExpiryDate.text.toString(),
             rewardPhoto   = binding.imgReward.cropToBlob(300,300),
         )

@@ -44,17 +44,18 @@ class SetUpStaffProfileFragment : Fragment() {
 
     private fun submit() {
 
-        val id = "USER00" + (vm.calSize() + 1).toString()
+        val id = "USER" + (vm.calSize() + 1).toString()
+        var chkID = vm.validID()
 
         val u = User(
-            userId = id,
+            userId = chkID,
             email = email,
             password = password,
             userName = binding.edtUserName.editText?.text.toString().trim(),
             phoneNumber = binding.edtPhoneNumber.editText?.text.toString(),
             userPhoto = binding.imgUserPic.cropToBlob(300,300),
             homeAddress = binding.edtHomeAddress.editText?.text.toString(),
-            userPoint = 0,
+            userPoint = 0.0,
             userType = "Staff"
         )
 

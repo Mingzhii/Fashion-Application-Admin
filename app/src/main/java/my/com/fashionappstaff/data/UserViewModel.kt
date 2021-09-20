@@ -10,6 +10,7 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
+import my.com.fashionappstaff.data.Reward
 import my.com.fashionappstaff.data.User
 import java.net.PasswordAuthentication
 
@@ -18,6 +19,9 @@ class UserViewModel : ViewModel() {
     private val col= Firebase.firestore.collection("users")
     private val users = MutableLiveData<List<User>>()
     private val staffs = MutableLiveData<List<User>>()
+    private var searchPro = listOf<User>()
+    private val result = MutableLiveData<List<User>>()
+    private var name = "" // for searching purpose
 
     private val userLiveData = MutableLiveData<User?>()
     private var listener: ListenerRegistration? = null
@@ -25,8 +29,29 @@ class UserViewModel : ViewModel() {
     //init block will always run before the constructor
     init {
         col.addSnapshotListener { snap, _ -> users.value = snap?.toObjects()
-        staffs.value = users.value?.filter { t -> t.userType == "Staff" } }
+        staffs.value = users.value?.filter { t -> t.userType == "Staff" }
+            searchPro = snap!!.toObjects<User>()
+            updateResult() }
     }
+
+    // Search
+    fun search(name: String){
+        this.name = name
+        updateResult()
+    }
+
+    private fun updateResult() {
+        var list = searchPro
+
+        //Search
+        list = list.filter {
+            it.userName.contains(name, true) && it.userType != "User"
+        }
+
+        result.value = list
+    }
+
+    fun getResult() = result
 
     // Remove snapshot listener when view model is destroyed
     override fun onCleared() {
@@ -60,6 +85,10 @@ class UserViewModel : ViewModel() {
 
     fun get(id : String): User?{
         return users.value?.find { u -> u.userId == id }
+    }
+
+    fun getEmail(email: String): User?{
+        return users.value?.find { u -> u.email == email }
     }
 
     fun getUserPhoto(userName : String): User?{
@@ -103,6 +132,44 @@ class UserViewModel : ViewModel() {
         return users.value?.any{ u -> u.email == email } ?: false
     }
 
+    private fun idExists(id: String): Boolean {
+        return users.value?.any{ u -> u.userId == id } ?: false
+    }
+
+    fun validID(): String {
+        var newID: String
+
+        val getLastUser = users.value?.lastOrNull()?.userId.toString()
+        val num: String = getLastUser.substringAfterLast("USER10")
+        newID = "USER10" + (num.toIntOrNull()?.plus(1)).toString()
+
+        if (newID == "USER1010") {
+            newID = "USER1" + (num.toIntOrNull()?.plus(1)).toString()
+            return newID
+        }
+
+        return when (calSize()) {
+            0 -> {
+                newID = "USER10" + (calSize() + 1)
+                newID
+            }
+            in 1..8 -> {
+                val getLastUser = users.value?.lastOrNull()?.userId.toString()
+                val num: String = getLastUser.substringAfterLast("USER10")
+                newID = "USER10" + (num.toIntOrNull()?.plus(1)).toString()
+                if (newID == "USER10null") {
+                    newID = "USER111"
+                    newID
+                } else newID
+            }
+            else -> {
+                val getLastUser = users.value?.lastOrNull()?.userId.toString()
+                val num: String = getLastUser.substringAfterLast("USER1")
+                newID = "USER1" + (num.toIntOrNull()?.plus(1)).toString()
+                newID
+            }
+        }
+    }
     fun validation(email: String, password: String): String {
         var e = ""
 

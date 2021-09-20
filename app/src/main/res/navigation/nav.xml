@@ -165,4 +165,30 @@
             app:popUpTo="@id/staffProfileFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <action
+        android:id="@+id/action_global_signInFragment"
+        app:destination="@id/signInFragment"
+        app:popUpTo="@id/signInFragment"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/paymentReportFragment"
+        android:name="my.com.fashionappstaff.ui.PaymentReportFragment"
+        android:label="fragment_payment_report"
+        tools:layout="@layout/fragment_payment_report" />
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="my.com.fashionappstaff.ui.ResetPasswordFragment"
+        android:label="fragment_reset_password"
+        tools:layout="@layout/fragment_reset_password" />
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="my.com.fashionappstaff.ui.ForgetPasswordFragment"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" >
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_signInFragment"
+            app:destination="@id/signInFragment"
+            app:popUpTo="@id/signInFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

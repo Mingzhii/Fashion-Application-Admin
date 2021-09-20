@@ -78,13 +78,15 @@ class InsertRewardFragment : Fragment() {
 
     private fun submit() {
 
-        val id = "REW00" + (vm.calSize() + 1).toString()
+        val id = "REW" + (vm.calSize() + 1).toString()
+        var chkID = vm.validID()
+
         val r = Reward(
-            rewardID = id,
+            rewardID = chkID,
             rewardName = binding.edtRewardName.editText?.text.toString().trim(),
             rewardDescrip = binding.edtRewardDescription.editText?.text.toString().trim(),
             rewardQuan    = binding.edtRewardQuantity.editText?.text.toString().toIntOrNull() ?: 0,
-            rewardPoint   = binding.edtRewardPoint.editText?.text.toString().toIntOrNull() ?: 0,
+            rewardPoint   = binding.edtRewardPoint.editText?.text.toString().toDoubleOrNull() ?: 0.0,
             expiryDate    = binding.btnExpiryDate.text.toString(),
             rewardPhoto   = binding.imgRewardPic.cropToBlob(300,300),
         )

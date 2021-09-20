@@ -14,7 +14,7 @@ data class Reward(
     var rewardName    : String = "",
     var rewardDescrip : String = "",
     var rewardQuan    : Int = 0,
-    var rewardPoint   : Int = 0,
+    var rewardPoint   : Double = 0.0,
     var date          : Date = Date(),
     var expiryDate    : String = "",
     var rewardPhoto   : Blob = Blob.fromBytes(ByteArray(0)),
@@ -30,7 +30,7 @@ data class User (
     var userPhoto   : Blob = Blob.fromBytes(ByteArray(0)),
     var homeAddress : String = "",
     var userType    : String = "",
-    var userPoint   : Int = 0,
+    var userPoint   : Double = 0.0,
 )
 
 data class Product (
@@ -43,4 +43,33 @@ data class Product (
     var productCategory: String = "",
     var date           : Date = Date(),
     var productPhoto   : Blob = Blob.fromBytes(ByteArray(0)),
+)
+
+data class Cart (
+    @DocumentId
+    var cartID : String = "",
+    var cartUsername : String = "",
+    var cartProductID : String = "",
+    var cartProductName : String = "",
+    var cartProductQuantity : Int = 0,
+    var cartProductPrice : Double = 0.0,
+    var cartProductSize : String = "",
+    var cartProductPhoto:  Blob = Blob.fromBytes(ByteArray(0)),
+    var cartStatus : String = "",
+)
+
+data class OrderList (
+    @DocumentId
+    var orderProductID : String = "",
+    var orderCartID    : String = "",
+    var orderProductQuantity : Int = 0,
+)
+
+data class Payment (
+    @DocumentId
+    var paymentID : String = "",
+    var userName  : String = "",
+    var paymentMethod : String = "",
+    var totalPrice    : Double = 0.0,
+    var paymentDate   : Date = Date(),
 )

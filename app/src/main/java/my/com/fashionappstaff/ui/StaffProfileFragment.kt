@@ -1,5 +1,7 @@
 package my.com.fashionappstaff.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -31,16 +33,17 @@ class StaffProfileFragment : Fragment() {
 
         //TODO
 
+        val preferences = activity?.getSharedPreferences("email", Context.MODE_PRIVATE)
+        val emailLogin = preferences?.getString("emailLogin","")
+
         val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         btn.visibility = View.VISIBLE
 
-        val email = email1
+        val u = emailLogin?.let { vm.getUserType(it) }
 
-        val u = vm.getUserType(email)
-
-        getImage(email)
-
-
+        if (emailLogin != null) {
+            getImage(emailLogin)
+        }
 
         if (u != null) {
             if(u.userType == "Admin"){
@@ -57,18 +60,31 @@ class StaffProfileFragment : Fragment() {
         binding.conLayout.setOnClickListener { nav.navigate(R.id.signUpFragment) }
         binding.conLayUpdateProfile.setOnClickListener { nav.navigate(R.id.updateUserProfileFragment) }
         binding.conManagerUser.setOnClickListener { nav.navigate(R.id.listUserFragment) }
+        binding.conLayReport.setOnClickListener { nav.navigate(R.id.paymentReportFragment) }
+//        binding.conLayResetPassword.setOnClickListener { nav.navigate(R.id.resetPasswordFragment3) }
 
         return binding.root
     }
+
     private fun logout():Boolean {
         // Logout -> vm.logout
         img = Blob.fromBytes(ByteArray(0))
         username = ""
+        val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
+        btn.selectedItemId = R.id.nav_home
+
+        val sharedPref = activity?.getSharedPreferences("checkBo", Context.MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = sharedPref!!.edit()
+        editor.putString("remember","false")
+        editor.apply()
+        val sharedPref1 = activity?.getSharedPreferences("email", Context.MODE_PRIVATE)
+        val editor1 : SharedPreferences.Editor = sharedPref1!!.edit()
+        editor1.putString("emailLogin","")
+        editor1.apply()
+
         FirebaseAuth.getInstance().signOut()
-        val ctx = requireActivity()
-        vm.logout(ctx)
-        nav.popBackStack(R.id.signInFragment, false)
-        nav.navigateUp()
+
+        nav.navigate(R.id.action_global_signInFragment)
 
         return true
     }

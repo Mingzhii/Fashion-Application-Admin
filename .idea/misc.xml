@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/drawable-v24/search_bar.xml" value="0.28615384615384615" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/drawable/ic_delete.xml" value="0.28615384615384615" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/drawable/ic_profile.xml" value="0.28615384615384615" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/drawable/item_selector.xml" value="0.290625" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/drawable/round_corner.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/drawable/search_bar.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/drawable/search_bar2.xml" value="0.28615384615384615" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/activity_main2.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/fragment_blank.xml" value="0.27447916666666666" />
@@ -15,7 +18,9 @@
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/fragment_list_product.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/fragment_list_reward.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/fragment_list_user.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/fragment_payment_report.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/fragment_product.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/fragment_reset_password.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/fragment_reward.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/fragment_set_up_staff_profile.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/fragment_sign_in.xml" value="0.27447916666666666" />
@@ -26,6 +31,7 @@
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/fragment_update_reward.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/fragment_update_user.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/fragment_update_user_profile.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/item_payment.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/item_product.xml" value="0.4" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/item_reward.xml" value="0.4" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/layout/item_user.xml" value="0.4" />
