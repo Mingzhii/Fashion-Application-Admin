@@ -1,6 +1,7 @@
 package my.com.fashionappstaff.ui
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,6 +37,9 @@ class ListUserFragment : Fragment() {
         vm.search("")
 
         vm.getAll()
+
+        val preferences = activity?.getSharedPreferences("email", Context.MODE_PRIVATE)
+        val emailLogin = preferences?.getString("emailLogin","")
 
         binding.imgListUserBack.setOnClickListener { nav.navigate(R.id.action_listUserFragment_to_staffProfileFragment) }
 
@@ -90,7 +94,11 @@ class ListUserFragment : Fragment() {
         binding.rv.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
        vm.getResult().observe(viewLifecycleOwner) { list ->
-           adapter.submitList(list)
+
+           val arrayUser = list.filter { u ->
+               u.email != emailLogin
+           }
+           adapter.submitList(arrayUser)
            binding.txtItem.text = "${list.size} Staff(s)"
         }
 

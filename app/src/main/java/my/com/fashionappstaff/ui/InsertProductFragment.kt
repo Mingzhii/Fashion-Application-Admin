@@ -20,6 +20,7 @@ import my.com.fashionappstaff.databinding.FragmentInsertProductBinding
 import my.com.fashionappstaff.util.SpinnerExtension
 import my.com.fashionappstaff.util.cropToBlob
 import my.com.fashionappstaff.util.errorDialog
+import my.com.fashionappstaff.util.informationDialog
 
 class InsertProductFragment : Fragment() {
 
@@ -89,7 +90,7 @@ class InsertProductFragment : Fragment() {
             return
         }else{
             val err = "Done"
-            errorDialog(err)
+            informationDialog(err)
             vm.set(p)
 
             clear()

@@ -49,10 +49,12 @@ class StaffProfileFragment : Fragment() {
             if(u.userType == "Admin"){
                 binding.conLayout.visibility = View.VISIBLE
                 binding.conManagerUser.visibility = View.VISIBLE
+                binding.conLayReport.visibility = View.VISIBLE
             }
             else{
                 binding.conLayout.visibility = View.GONE
                 binding.conManagerUser.visibility = View.GONE
+                binding.conLayReport.visibility = View.GONE
             }
         }
 
@@ -61,7 +63,6 @@ class StaffProfileFragment : Fragment() {
         binding.conLayUpdateProfile.setOnClickListener { nav.navigate(R.id.updateUserProfileFragment) }
         binding.conManagerUser.setOnClickListener { nav.navigate(R.id.listUserFragment) }
         binding.conLayReport.setOnClickListener { nav.navigate(R.id.paymentReportFragment) }
-//        binding.conLayResetPassword.setOnClickListener { nav.navigate(R.id.resetPasswordFragment3) }
 
         return binding.root
     }

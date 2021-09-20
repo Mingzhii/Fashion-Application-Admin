@@ -59,8 +59,6 @@ class SignUpFragment : Fragment() {
                         OnCompleteListener<AuthResult> { t ->
                             if (t.isSuccessful) {
                                 val firebaseUser: FirebaseUser = t.result!!.user!!
-                                val err = "Done"
-                                errorDialog(err)
                                 nav.navigate(R.id.setUpStaffProfileFragment, args)
                             } else {
                                 val err = t.exception!!.message.toString()

@@ -35,6 +35,8 @@ class PaymentReportFragment : Fragment() {
         val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         btn.visibility = View.GONE
 
+        binding.imgBack.setOnClickListener { nav.navigate(R.id.action_paymentReportFragment_to_staffProfileFragment) }
+
         binding.edtSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(name: String) = true
             override fun onQueryTextChange(name: String): Boolean {
@@ -43,15 +45,16 @@ class PaymentReportFragment : Fragment() {
             }
         })
 
+        val num = 0
 
         adapter = HistoryAdapter() { holder, cart ->
             // Item click
-            var totalprice = 0.0
+            var totalprice = binding.txtSubtotal.text.toString().toDouble()
             val productPrice = holder.txtPrice.text.toString().toDouble()
             val productQuantity = holder.txtQuantity.text.toString().toInt()
             val subtotal = productPrice * productQuantity.toString().toDouble()
             totalprice += subtotal
-
+            
             binding.txtSubtotal.text = "%.2f".format(totalprice)
         }
 
