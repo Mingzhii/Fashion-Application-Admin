@@ -2,6 +2,8 @@ package my.com.fashionappstaff.data
 
 import com.google.firebase.firestore.Blob
 import com.google.firebase.firestore.DocumentId
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 var email1 : String = ""
@@ -63,6 +65,25 @@ data class OrderList (
     var orderProductID : String = "",
     var orderCartID    : String = "",
     var orderProductQuantity : Int = 0,
+)
+
+val currentDate = LocalDate.now()
+val viewFormatter = DateTimeFormatter.ofPattern("dd MMM, YYYY")
+val formatDate = viewFormatter.format(currentDate)
+
+data class Order (
+    @DocumentId
+    var orderId : String = "",
+    var orderProduct : String = "",
+    var orderProductQuantity: String = "",
+    var orderProductTotalPrice: String = "",
+    var orderProductSize: String = "",
+    var orderDate : String = formatDate,
+    var orderShipping : String = "",
+    var orderUserName : String = "",
+    var orderUserPhone : String = "",
+    var orderPaymentId : String = "",
+    var orderStatus : String = "",
 )
 
 data class Payment (

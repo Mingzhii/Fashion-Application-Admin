@@ -197,4 +197,13 @@
             app:popUpTo="@id/signInFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/listDeliveryFragment"
+        android:name="my.com.fashionappstaff.ui.ListDeliveryFragment"
+        android:label="fragment_list_delivery"
+        tools:layout="@layout/fragment_list_delivery" />
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="my.com.fashionapp.UI.OrderDetailFragment"
+        android:label="OrderDetailFragment" />
 </navigation>

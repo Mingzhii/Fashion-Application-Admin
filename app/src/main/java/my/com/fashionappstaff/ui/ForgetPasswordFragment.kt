@@ -50,7 +50,6 @@ class ForgetPasswordFragment : Fragment() {
 
         binding.btnBack.setOnClickListener { nav.navigate(R.id.action_forgetPasswordFragment_to_signInFragment) }
 
-
         binding.btnOTP.setOnClickListener { sendOTP(OTP) }
 
         binding.btnSubmit.setOnClickListener { resetPassword(OTP) }

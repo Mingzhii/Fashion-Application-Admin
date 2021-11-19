@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_paid"
+        android:icon="@drawable/ic_paid"
+        android:title="Paid" />
+    <item
+        android:id="@+id/nav_ship"
+        android:icon="@drawable/ic_toship"
+        android:title="To Ship" />
+    <item
+        android:id="@+id/nav_delivering"
+        android:icon="@drawable/ic_delivering"
+        android:title="Delivering" />
+    <item
+        android:id="@+id/nav_delivered"
+        android:icon="@drawable/ic_bag"
+        android:title="Delivered" />
+    <item
+        android:id="@+id/nav_completed"
+        android:icon="@drawable/ic_like"
+        android:title="Completed" />
+</menu>
