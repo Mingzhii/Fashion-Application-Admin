@@ -1,10 +1,11 @@
-package my.com.fashionappstaff.ui
+package my.com.fashionapp.UI
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -13,31 +14,44 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import my.com.fashionapp.data.OrderViewModel
 import my.com.fashionapp.data.PaymentViewModel
 import my.com.fashionapp.data.ProductViewModel
+import my.com.fashionapp.data.UserViewModel
 import my.com.fashionapp.util.DeliveryAdapter
 import my.com.fashionappstaff.R
-import my.com.fashionappstaff.databinding.FragmentListDeliveryBinding
+import my.com.fashionappstaff.data.CartViewModel
+import my.com.fashionappstaff.databinding.FragmentDeliveryToShipBinding
 import my.com.fashionappstaff.util.toBitmap
 
-class ListDeliveryFragment : Fragment() {
+class DeliveryToShipFragment : Fragment() {
 
-    private lateinit var binding: FragmentListDeliveryBinding
-    private val nav by lazy { findNavController() }
-    private val vmO: OrderViewModel by activityViewModels()
+    private lateinit var binding: FragmentDeliveryToShipBinding
+    private val nav by lazy{ findNavController() }
+    private val vmU : UserViewModel by activityViewModels()
     private val vm: ProductViewModel by activityViewModels()
+    private val vmC: CartViewModel by activityViewModels()
+    private val vmO: OrderViewModel by activityViewModels()
     private val vmP: PaymentViewModel by activityViewModels()
+
     private lateinit var adapter: DeliveryAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        binding = FragmentListDeliveryBinding.inflate(inflater, container, false)
+        binding = FragmentDeliveryToShipBinding.inflate(inflater, container, false)
+
+        vmO.getAll()
+        vm.getAll()
+
         val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         btn.visibility = View.GONE
 
-        vm.getAll()
-        vmO.getAll()
-        vmP.getAll()
+//        binding.edtSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(name: String) = true
+//            override fun onQueryTextChange(name: String): Boolean {
+//                vm.search(name)
+//                return true
+//            }
+//        })
 
-        binding.imgDeliveryBack.setOnClickListener { nav.navigate(R.id.staffHomeFragment) }
+        binding.imgDeliveryBack.setOnClickListener { nav.navigate(R.id.listDeliveryFragment) }
 
         adapter = DeliveryAdapter() { holder, product ->
 
@@ -47,13 +61,12 @@ class ListDeliveryFragment : Fragment() {
 
             if (p != null) {
                 holder.imgPhoto.setImageBitmap(p.productPhoto.toBitmap())
-                holder.txtProductName.setText(p.productName).toString()
+                holder.txtProductName.setText(p.productName)
             }
 
             holder.root.setOnClickListener {
-
                 if (o != null && p != null) {
-                    nav.navigate(R.id.orderDetailFragment, bundleOf("id" to product.orderId, "id1" to product.orderProduct,"id2" to product.orderPaymentId ))
+                    nav.navigate(R.id.updateToDeliveryFragment, bundleOf("id" to product.orderId, "id1" to product.orderProduct,"id2" to product.orderPaymentId ))
                 }
             }
         }
@@ -63,7 +76,7 @@ class ListDeliveryFragment : Fragment() {
 
         vmO.getAll().observe(viewLifecycleOwner){list ->
             var orderArray = list.filter { o ->
-                o.orderStatus == "Paid"
+                o.orderStatus == "To Ship"
             }
             adapter.submitList(orderArray)
         }
@@ -81,5 +94,6 @@ class ListDeliveryFragment : Fragment() {
 
         return binding.root
     }
+
 
 }

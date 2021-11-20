@@ -206,4 +206,32 @@
         android:id="@+id/orderDetailFragment"
         android:name="my.com.fashionapp.UI.OrderDetailFragment"
         android:label="OrderDetailFragment" />
+    <fragment
+        android:id="@+id/deliveryCompletedFragment"
+        android:name="my.com.fashionapp.UI.DeliveryCompletedFragment"
+        android:label="DeliveryCompletedFragment" />
+    <fragment
+        android:id="@+id/deliveryDeliveredFragment"
+        android:name="my.com.fashionapp.UI.DeliveryDeliveredFragment"
+        android:label="DeliveryDeliveredFragment" />
+    <fragment
+        android:id="@+id/deliveryDeliveringFragment"
+        android:name="my.com.fashionapp.UI.DeliveryDeliveringFragment"
+        android:label="DeliveryDeliveringFragment" />
+    <fragment
+        android:id="@+id/deliveryToShipFragment"
+        android:name="my.com.fashionapp.UI.DeliveryToShipFragment"
+        android:label="DeliveryToShipFragment" />
+    <fragment
+        android:id="@+id/updateToDeliveryFragment"
+        android:name="my.com.fashionapp.UI.UpdateToDeliveryFragment"
+        android:label="UpdateToDeliveryFragment" />
+    <fragment
+        android:id="@+id/updateToDeliveredFragment"
+        android:name="my.com.fashionapp.UI.UpdateToDeliveredFragment"
+        android:label="UpdateToDeliveredFragment" />
+    <fragment
+        android:id="@+id/updateToCompletedFragment"
+        android:name="my.com.fashionapp.UI.UpdateToCompletedFragment"
+        android:label="UpdateToCompletedFragment" />
 </navigation>
