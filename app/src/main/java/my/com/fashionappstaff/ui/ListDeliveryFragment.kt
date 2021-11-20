@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import my.com.fashionapp.data.OrderViewModel
+import my.com.fashionapp.data.PaymentViewModel
 import my.com.fashionapp.data.ProductViewModel
 import my.com.fashionapp.util.DeliveryAdapter
 import my.com.fashionappstaff.R
@@ -22,7 +23,8 @@ class ListDeliveryFragment : Fragment() {
     private lateinit var binding: FragmentListDeliveryBinding
     private val nav by lazy { findNavController() }
     private val vmO: OrderViewModel by activityViewModels()
-    private val vmP: ProductViewModel by activityViewModels()
+    private val vm: ProductViewModel by activityViewModels()
+    private val vmP: PaymentViewModel by activityViewModels()
     private lateinit var adapter: DeliveryAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -31,6 +33,7 @@ class ListDeliveryFragment : Fragment() {
         val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         btn.visibility = View.GONE
 
+        vm.getAll()
         vmO.getAll()
         vmP.getAll()
 
@@ -38,12 +41,13 @@ class ListDeliveryFragment : Fragment() {
 
         adapter = DeliveryAdapter() { holder, product ->
 
-            val p = vmP.get(product.orderProduct)
+            val p = vm.get(product.orderProduct)
             val o = vmO.get(product.orderId)
+            val pay = vmP.get(product.orderPaymentId)
 
             if (p != null) {
                 holder.imgPhoto.setImageBitmap(p.productPhoto.toBitmap())
-                holder.txtProductName.setText(p.productName)
+                holder.txtProductName.setText(p.productName).toString()
             }
 
             holder.root.setOnClickListener {
@@ -58,7 +62,10 @@ class ListDeliveryFragment : Fragment() {
         binding.rv.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         vmO.getAll().observe(viewLifecycleOwner){list ->
-            adapter.submitList(list)
+            var orderArray = list.filter { o ->
+                o.orderStatus == "Paid"
+            }
+            adapter.submitList(orderArray)
         }
 
         return binding.root

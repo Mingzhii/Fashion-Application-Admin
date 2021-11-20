@@ -23,7 +23,7 @@ class DeliveryAdapter (val fn: (ViewHolder, Order) -> Unit = { _, _ -> })
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val root = view
-        val imgPhoto      : ImageView = view.findViewById(R.id.imageView3)
+        val imgPhoto      : ImageView = view.findViewById(R.id.imgOrderProduct)
         val txtProductName: TextView = view.findViewById(R.id.txtOrderProductName)
         val txtPrice      : TextView = view.findViewById(R.id.txtOrderProductPrice)
         val txtQuantity   : TextView = view.findViewById(R.id.txtOrderProductQuantity)

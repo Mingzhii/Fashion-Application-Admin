@@ -43,18 +43,21 @@ class OrderDetailFragment : Fragment() {
         val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         btn.visibility = View.GONE
 
+        vm.getAll()
+        vmO.getAll()
+        vmP.getAll()
+
         orderDetail()
         binding.imgOrderDetailsBack.setOnClickListener { nav.navigate(R.id.staffHomeFragment) }
 
-        val p1 = vm.get(id1)
-
+        val product = vm.get(id1)
 
         binding.btnPaid.setOnClickListener {
             updateStatusToShip()
         }
 
         binding.imageView8.setOnClickListener {
-            if (p1 != null) {
+            if (product != null) {
 //                nav.navigate(R.id.deliveryProductDetailFragment, bundleOf("id" to id1))
             }else{
                 snackbar("Fail")
@@ -66,12 +69,27 @@ class OrderDetailFragment : Fragment() {
 
     private fun updateStatusToShip() {
 
-//        val o = Order(
-//            orderId = id,
-//            orderStatus = "To Ship"
-//        )
-//        vmO.set(o)
-//        nav.navigateUp()
+        val order = vmO.get(id)
+
+        val o = order?.let {
+            Order(
+                orderId = id,
+                orderPaymentId = id2,
+                orderProduct = id1,
+                orderProductQuantity = it.orderProductQuantity,
+                orderProductTotalPrice = it.orderProductTotalPrice,
+                orderShipping = it.orderShipping,
+                orderUserName = it.orderUserName,
+                orderUserPhone = it.orderUserPhone,
+                orderStatus = "To Ship"
+            )
+        }
+        if (o != null) {
+            vmO.set(o)
+        }else{
+            snackbar("Update Fail")
+        }
+        nav.navigateUp()
     }
 
     private fun orderDetail() {
@@ -81,21 +99,21 @@ class OrderDetailFragment : Fragment() {
         val pay = vmP.get(id2)
 
         if(o != null){
-            binding.txtShippingInfo.setText(o.orderId)
-            binding.txtOrderDate.setText(o.orderDate)
-            binding.txtAddress.setText(o.orderShipping)
-            binding.txtOrderDetailsPrice.setText("RM" + o.orderProductTotalPrice)
-            binding.txtOrderDetailsQuant.setText("X" + o.orderProductQuantity)
-            binding.txtRecipientName.setText(o.orderUserName)
-            binding.txtPhoneNo.setText(o.orderUserPhone)
-            binding.txtOrderDetailStatus.setText(o.orderStatus)
+            binding.txtShippingInfo.setText(o.orderId).toString()
+            binding.txtOrderDate.setText(o.orderDate).toString()
+            binding.txtAddress.setText(o.orderShipping).toString()
+            binding.txtOrderDetailsPrice.setText("RM" + o.orderProductTotalPrice).toString()
+            binding.txtOrderDetailsQuant.setText("X" + o.orderProductQuantity).toString()
+            binding.txtRecipientName.setText(o.orderUserName).toString()
+            binding.txtPhoneNo.setText(o.orderUserPhone).toString()
+            binding.txtOrderDetailStatus.setText(o.orderStatus).toString()
         }
         if(p != null){
-            binding.txtOrderDetailsName.setText(p.productName)
+            binding.txtOrderDetailsName.setText(p.productName).toString()
             binding.imageView8.setImageBitmap(p.productPhoto.toBitmap())
         }
         if(pay != null){
-            binding.txtPaymentMethod.setText(pay.paymentMethod)
+            binding.txtPaymentMethod.setText(pay.paymentMethod).toString()
         }
 
     }
