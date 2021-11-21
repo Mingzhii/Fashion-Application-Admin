@@ -32,7 +32,7 @@ class StaffProfileFragment : Fragment() {
         binding = FragmentStaffProfileBinding.inflate(inflater, container, false)
 
         //TODO
-
+        
         val preferences = activity?.getSharedPreferences("email", Context.MODE_PRIVATE)
         val emailLogin = preferences?.getString("emailLogin","")
 

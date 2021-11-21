@@ -208,43 +208,5 @@ class UserViewModel : ViewModel() {
         return e
     }
 
-    //--------------------------------------------------------------------
-    //Login and Logout
-    suspend fun login(ctx: Context, email: String, password: String, remember: Boolean = false): Boolean{
-        // TODO(1A): Get the user record with matching email + password
-        //           Return false is no matching found
-        val user = col
-            .whereEqualTo("email", email)
-            .whereEqualTo("password", password)
-            .get()
-            .await()
-            .toObjects<User>()
-            .firstOrNull() ?: return false
-
-        // TODO(1B): Setup snapshot listener
-        //           Update live data -> user
-        listener?.remove()
-        listener = col.document(user.userId).addSnapshotListener { doc, _ ->
-            userLiveData.value = doc?.toObject()
-        }
-
-        // TODO(6A): Handle remember-me -> add shared preferences
-
-        return true
-    }
-
-    // TODO(2): Logout
-    fun logout(ctx: Context) {
-        // TODO(2A): Remove snapshot listener
-        //           Update live data -> null
-        listener?.remove()
-        userLiveData.value = null
-
-        // TODO(6B): Handle remember-me -> clear shared preferences
-//        getPreferences(ctx).edit().clear().apply()
-
-        //getPreferences(ctx).edit().remove("email").remove("password").apply()
-        //ctx.deleteSharedPreferences("AUTH")
-    }
 
 }

@@ -49,24 +49,27 @@ class PaymentReportFragment : Fragment() {
 
         adapter = HistoryAdapter() { holder, cart ->
             // Item click
-            var totalprice = binding.txtSubtotal.text.toString().toDouble()
-            val productPrice = holder.txtPrice.text.toString().toDouble()
-            val productQuantity = holder.txtQuantity.text.toString().toInt()
-            val subtotal = productPrice * productQuantity.toString().toDouble()
-            totalprice += subtotal
-            
-            binding.txtSubtotal.text = "%.2f".format(totalprice)
         }
 
         binding.rv.adapter = adapter
         binding.rv.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         vm.getResult().observe(viewLifecycleOwner) { list ->
-
+            var totalprice = 0.0
             var cartArray = list.filter { c ->
                 c.cartStatus == "Done The Payment"
             }
+
+            for (i in 0..cartArray.size - 1){
+                val productPrice = cartArray[i].cartProductPrice
+                val productQuantity = cartArray[i].cartProductQuantity
+                val subtotal = productPrice * productQuantity
+                totalprice += subtotal
+
+                binding.txtSubtotal.text = "%.2f".format(totalprice)
+            }
             adapter.submitList(cartArray)
+            binding.txtItem.text = "${cartArray.size} product(s)"
         }
 
 

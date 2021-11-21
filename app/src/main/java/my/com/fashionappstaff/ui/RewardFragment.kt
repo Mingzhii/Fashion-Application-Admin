@@ -24,7 +24,8 @@ class RewardFragment : Fragment() {
         val btn : BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         btn.visibility = View.VISIBLE
 
-        binding.btnAddReward.setOnClickListener { nav.navigate(R.id.insertRewardFragment) }
+//        binding.btnAddReward.setOnClickListener { nav.navigate(R.id.insertRewardFragment) }
+        binding.btnAddReward.setOnClickListener { nav.navigate(R.id.insertVoucherFragment) }
 
         binding.btnListReward.setOnClickListener { nav.navigate(R.id.listRewardFragment) }
 

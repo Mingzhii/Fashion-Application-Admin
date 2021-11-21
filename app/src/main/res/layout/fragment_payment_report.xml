@@ -33,8 +33,8 @@
         android:id="@+id/textView34"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="8dp"
         android:text="Subtotal (RM) :"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -43,14 +43,12 @@
 
     <TextView
         android:id="@+id/txtSubtotal"
-        android:layout_width="0dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginEnd="20dp"
         android:text="0.0"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView34"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView34"
         app:layout_constraintTop_toTopOf="@+id/textView34" />
 
@@ -79,4 +77,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+    <TextView
+        android:id="@+id/txtItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtSubtotal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtSubtotal"
+        app:layout_constraintTop_toTopOf="@+id/txtSubtotal" />
 </androidx.constraintlayout.widget.ConstraintLayout>

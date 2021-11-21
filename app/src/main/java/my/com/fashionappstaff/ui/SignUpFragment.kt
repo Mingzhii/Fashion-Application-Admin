@@ -53,7 +53,6 @@ class SignUpFragment : Fragment() {
                     "email" to email,
                     "password" to password,
                 )
-                nav.navigate(R.id.setUpStaffProfileFragment, args)
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(
                         OnCompleteListener<AuthResult> { t ->
@@ -66,7 +65,6 @@ class SignUpFragment : Fragment() {
                             }
                         }
                     )
-                nav.navigate(R.id.setUpStaffProfileFragment, args)
 
             }
 

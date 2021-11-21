@@ -7,8 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -17,7 +15,6 @@ import my.com.fashionapp.data.ProductViewModel
 import my.com.fashionappstaff.R
 import my.com.fashionappstaff.data.Product
 import my.com.fashionappstaff.databinding.FragmentInsertProductBinding
-import my.com.fashionappstaff.util.SpinnerExtension
 import my.com.fashionappstaff.util.cropToBlob
 import my.com.fashionappstaff.util.errorDialog
 import my.com.fashionappstaff.util.informationDialog

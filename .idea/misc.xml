@@ -3,25 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/fragment_delivery_completed.xml" value="0.35260416666666666" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/fragment_delivery_delivered.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/fragment_delivery_delivered2.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/fragment_delivery_delivering.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/fragment_delivery_to_ship.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/fragment_list_delivery.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/fragment_order_detail.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/fragment_update_to_completed.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/fragment_update_to_delivered.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/fragment_update_to_delivery.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/fragment_update_user_profile.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/item_order.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/item_payment.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/item_product.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/item_reward.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/layout/item_user.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/menu/item_delivery_status.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Lucas/AndroidStudioProjects/Fashion-Application-Admin/app/src/main/res/menu/item_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/drawable-v24/search_bar.xml" value="0.28615384615384615" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/drawable/ic_delete.xml" value="0.28615384615384615" />
         <entry key="..\:/Users/xiaoz/Desktop/FashionAppStaff/app/src/main/res/drawable/ic_profile.xml" value="0.28615384615384615" />

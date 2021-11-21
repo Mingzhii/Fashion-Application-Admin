@@ -37,6 +37,7 @@ class InsertRewardFragment : Fragment() {
             binding.imgRewardPic.setImageURI(it.data?.data)
         }
     }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = FragmentInsertRewardBinding.inflate(inflater, container, false)

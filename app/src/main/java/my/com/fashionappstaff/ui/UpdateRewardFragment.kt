@@ -116,7 +116,6 @@ class UpdateRewardFragment : Fragment() {
         binding.edtRewardQuantity.editText?.setText(r.rewardQuan.toString())
         binding.edtRewardDescription.editText?.setText(r.rewardDescrip)
         binding.edtRewardPoint.editText?.setText(r.rewardPoint.toString())
-        binding.btnExpiryDate.text = r.expiryDate
 
         binding.edtRewardName.requestFocus()
     }

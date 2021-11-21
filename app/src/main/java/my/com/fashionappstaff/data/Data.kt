@@ -94,3 +94,30 @@ data class Payment (
     var totalPrice    : Double = 0.0,
     var paymentDate   : Date = Date(),
 )
+
+val currentDate = LocalDate.now()
+val viewFormatter = DateTimeFormatter.ofPattern("dd MMM, YYYY")
+val formatDate = viewFormatter.format(currentDate)
+
+data class Voucher (
+    @DocumentId
+    var voucherId : String = "",
+    var voucherImg : Blob = Blob.fromBytes(ByteArray(0)),
+    var voucherName : String = "",
+    var voucherTerm : String = "",
+    var voucherDescription : String = "",
+    var voucherQuantity : Int = 0,
+    var voucherDate : String = formatDate,
+    var voucherExpiryDate : String = "",
+    var voucherValue : Double = 0.0,
+)
+data class VoucherClaim (
+    @DocumentId
+    var voucherId : String = "",
+    var claimUser : String = "",
+    var voucherQuantity : Int = 0,
+    var voucherDate : String = formatDate,
+    var voucherExpiryDate : String = "",
+    var voucherValue : Int = 0,
+    var voucherStatus : String = "",
+)
