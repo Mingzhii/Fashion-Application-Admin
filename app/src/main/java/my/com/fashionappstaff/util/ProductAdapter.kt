@@ -39,11 +39,8 @@ class ProductAdapter (val fn: (ViewHolder, Product) -> Unit = { _, _ -> })
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product = getItem(position)
 
-//        holder.txtId.text   = friend.id
         holder.txtName.text = product.productName
         holder.txtPrice.text  = "RM %.2f".format(product.productPrice)
-
-        // TODO: Photo (blob to bitmap)a
         holder.imgPhoto.setImageBitmap(product.productPhoto.toBitmap())
 
         fn(holder, product)

@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_reward -> nav.navigate(R.id.action_global_rewardFragment)
                 R.id.nav_profile -> nav.navigate(R.id.action_global_staffProfileFragment)
                 R.id.nav_delivery -> nav.navigate(R.id.listDeliveryFragment)
+//                R.id.nav_voucher -> nav.navigate(R.id.voucherFragment)
             }
             true
         }

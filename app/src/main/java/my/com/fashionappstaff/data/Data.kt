@@ -58,6 +58,8 @@ data class Cart (
     var cartProductSize : String = "",
     var cartProductPhoto:  Blob = Blob.fromBytes(ByteArray(0)),
     var cartStatus : String = "",
+    var cartTotalPrice : Double = 0.0,
+    var cartCheck : String = "",
 )
 
 data class OrderList (
@@ -95,10 +97,6 @@ data class Payment (
     var paymentDate   : Date = Date(),
 )
 
-val currentDate = LocalDate.now()
-val viewFormatter = DateTimeFormatter.ofPattern("dd MMM, YYYY")
-val formatDate = viewFormatter.format(currentDate)
-
 data class Voucher (
     @DocumentId
     var voucherId : String = "",
@@ -111,13 +109,16 @@ data class Voucher (
     var voucherExpiryDate : String = "",
     var voucherValue : Double = 0.0,
 )
-data class VoucherClaim (
+
+data class VoucherClaim(
     @DocumentId
-    var voucherId : String = "",
-    var claimUser : String = "",
-    var voucherQuantity : Int = 0,
-    var voucherDate : String = formatDate,
-    var voucherExpiryDate : String = "",
-    var voucherValue : Int = 0,
-    var voucherStatus : String = "",
+    var voucherClaimID: String = "",
+    var voucherId: String = "",
+    var claimUser: String = "",
+    var voucherClaimImg: Blob = Blob.fromBytes(ByteArray(0)),
+    var voucherClaimName: String = "",
+    var voucherClaimQuantity: Int = 0,
+    var voucherClaimExpiryDate: String = formatDate,
+    var voucherValue: Double = 0.0,
+    var voucherStatus: String = "",
 )

@@ -61,8 +61,9 @@ class StaffProfileFragment : Fragment() {
         binding.conLayLogout.setOnClickListener { logout() }
         binding.conLayout.setOnClickListener { nav.navigate(R.id.signUpFragment) }
         binding.conLayUpdateProfile.setOnClickListener { nav.navigate(R.id.updateUserProfileFragment) }
+        binding.conLayVoucher.setOnClickListener { nav.navigate(R.id.voucherFragment) }
         binding.conManagerUser.setOnClickListener { nav.navigate(R.id.listUserFragment) }
-        binding.conLayReport.setOnClickListener { nav.navigate(R.id.paymentReportFragment) }
+        binding.conLayReport.setOnClickListener { nav.navigate(R.id.reportFragment) }
 
         return binding.root
     }

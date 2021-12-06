@@ -20,6 +20,9 @@
     <item android:id="@+id/nav_profile"
         android:title="@string/profile"
         android:icon="@drawable/ic_profile" />
+<!--    <item-->
+<!--        android:id="@+id/nav_voucher"-->
+<!--        android:title="Voucher" />-->
 
 
 </menu>

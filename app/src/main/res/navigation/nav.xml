@@ -197,4 +197,67 @@
             app:popUpTo="@id/signInFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/insertVoucherFragment"
+        android:name="my.com.fashionappstaff.ui.InsertVoucherFragment"
+        android:label="fragment_insert_voucher"
+        tools:layout="@layout/fragment_insert_voucher" />
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="my.com.fashionappstaff.ui.ReportFragment"
+        android:label="fragment_report"
+        tools:layout="@layout/fragment_report" >
+        <action
+            android:id="@+id/action_reportFragment_to_staffProfileFragment"
+            app:destination="@id/staffProfileFragment"
+            app:popUpTo="@id/reportFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/listDeliveryFragment"
+        android:name="my.com.fashionappstaff.ui.ListDeliveryFragment"
+        android:label="fragment_list_delivery"
+        tools:layout="@layout/fragment_list_delivery" />
+    <fragment
+        android:id="@+id/deliveryCompletedFragment"
+        android:name="my.com.fashionapp.UI.DeliveryCompletedFragment"
+        android:label="DeliveryCompletedFragment" />
+    <fragment
+        android:id="@+id/deliveryDeliveredFragment"
+        android:name="my.com.fashionapp.UI.DeliveryDeliveredFragment"
+        android:label="DeliveryDeliveredFragment" />
+    <fragment
+        android:id="@+id/deliveryDeliveringFragment"
+        android:name="my.com.fashionapp.UI.DeliveryDeliveringFragment"
+        android:label="DeliveryDeliveringFragment" />
+    <fragment
+        android:id="@+id/deliveryToShipFragment"
+        android:name="my.com.fashionapp.UI.DeliveryToShipFragment"
+        android:label="DeliveryToShipFragment" />
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="my.com.fashionapp.UI.OrderDetailFragment"
+        android:label="OrderDetailFragment" />
+    <fragment
+        android:id="@+id/updateToCompletedFragment"
+        android:name="my.com.fashionapp.UI.UpdateToCompletedFragment"
+        android:label="UpdateToCompletedFragment" />
+    <fragment
+        android:id="@+id/updateToDeliveredFragment"
+        android:name="my.com.fashionapp.UI.UpdateToDeliveredFragment"
+        android:label="UpdateToDeliveredFragment" />
+    <fragment
+        android:id="@+id/updateToDeliveryFragment"
+        android:name="my.com.fashionapp.UI.UpdateToDeliveryFragment"
+        android:label="UpdateToDeliveryFragment" />
+    <fragment
+        android:id="@+id/listVoucherFragment"
+        android:name="my.com.fashionappstaff.ui.ListVoucherFragment"
+        android:label="fragment_list_voucher"
+        tools:layout="@layout/fragment_list_voucher" />
+    <fragment
+        android:id="@+id/voucherFragment"
+        android:name="my.com.fashionappstaff.ui.VoucherFragment"
+        android:label="fragment_voucher"
+        tools:layout="@layout/fragment_voucher" />
 </navigation>

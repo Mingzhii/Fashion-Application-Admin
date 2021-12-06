@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'kotlin-android-extensions'
+
 
     // TODO: Google services
     id 'com.google.gms.google-services'
@@ -42,9 +42,7 @@ android {
         exclude 'META-INF/LICENSE.md'
     }
 }
-repositories {
-    mavenCentral()
-}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -80,6 +78,5 @@ dependencies {
     //QR Code
     implementation 'com.google.zxing:core:3.4.1'
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
-
 
 }

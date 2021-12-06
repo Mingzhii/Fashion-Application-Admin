@@ -25,7 +25,7 @@ class RewardFragment : Fragment() {
         btn.visibility = View.VISIBLE
 
 //        binding.btnAddReward.setOnClickListener { nav.navigate(R.id.insertRewardFragment) }
-        binding.btnAddReward.setOnClickListener { nav.navigate(R.id.insertVoucherFragment) }
+        binding.btnAddReward.setOnClickListener { nav.navigate(R.id.insertRewardFragment) }
 
         binding.btnListReward.setOnClickListener { nav.navigate(R.id.listRewardFragment) }
 

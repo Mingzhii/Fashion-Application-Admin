@@ -109,38 +109,30 @@ class RewardViewModel : ViewModel() {
     }
 
     fun validate(r: Reward, insert: Boolean = true): String {
-
         var e = ""
         val Date = Date()
-
         //name
         e += if (r.rewardName == "") "- Reward Name is required.\n"
         else if (r.rewardName.length < 3) "- Reward Name is too short.\n"
         else if (nameExists(r.rewardName)) "- Reward Name is duplicated.\n"
         else ""
-
         //Description
         e += if (r.rewardDescrip == "") "- Description is required.\n"
         else if (r.rewardDescrip.length < 3) "- Description is to short.\n"
         else ""
-
         //Quantity
         e += if (r.rewardQuan == 0) "- Quantity cannot be 0. \n"
         else ""
-
         //Point
         e += if (r.rewardPoint == 0.0 ) "- Point cannot be 0. \n"
         else ""
-
         //Expiry Date
         e += if (r.expiryDate == Date.toString()) "- Expiry date cannot be today. \n"
         else if (r.expiryDate == "") "- Please Select Expiry Date. \n"
         else ""
-
         //Photo
         e += if (r.rewardPhoto.toBytes().isEmpty()) "- Reward Photo is required.\n"
         else ""
-
         return e
     }
 }
